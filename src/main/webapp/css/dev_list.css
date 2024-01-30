@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+	.content .title-area{
+		margin-bottom:10px;
+	}
+	
+	.content .title-area .title{
+		font-size:20px;
+	}
+	
+	#data-table table {
+		width:70%;
+		text-align:center;
+		border-collapse:collapse;
+	}
+	
+	#data-table table th, #data-table table td{
+		border-collapse:collapse;
+	}
+	#data-table table th{
+		border-bottom:3px rgba(0,0,0,0.16) solid;
+		font-size: 17px;
+    	padding: 5px;
+	}
+	#data-table table td{
+		border-bottom:1px rgba(0,0,0,0.16) solid;
+		font-size: 15px;
+		padding: 5px;
+	}
+	
+	#data-table table .inp-cont{
+		width:90%;
+		text-overflow: ellipsis;
+	}
+	
+	.btn-area{
+		margin-bottom:10px;
+		width:70%;
+	}
+	.btn-area input[type=button]{
+		margin-left:2px;
+		width:80px;
+		height:25px;
+		background-color:white;
+		float:right;
+		border:1px solid gray;
+		border-radius:3px;
+		cursor:pointer;
+	}
+	
