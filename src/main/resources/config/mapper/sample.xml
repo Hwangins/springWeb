@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springWeb.module.sample.repository.SampleRepository">
+    <!-- 단건 조회 -->
+    <select id="selectDev" parameterType="java.util.Map" resultType="cmap">
+        SELECT ROW_NUMBER() OVER(ORDER BY ID DESC) AS ROW_NUM
+		     , ID
+		     , FUNC_NM
+		     , URL
+		     , COMP_YN 
+		FROM SAMPLE
+	   WHERE ID = 1
+    </select>
+    
+    <!-- 다건 조회 -->
+    <select id="selectDevList" parameterType="java.util.Map" resultType="cmap">
+        SELECT ROW_NUMBER() OVER(ORDER BY ID DESC) AS ROW_NUM
+		     , ID
+		     , FUNC_NM
+		     , URL
+		     , COMP_YN 
+		FROM SAMPLE
+    </select>
+    
+    <insert id="saveDev" parameterType="java.util.Map">
+	    <selectKey keyProperty="id" resultType="long" order="BEFORE">
+        	SELECT IFNULL(MAX(ID)+1, 1) FROM SAMPLE
+    	</selectKey>
+	    INSERT INTO SAMPLE(
+	    	  ID
+	    	, FUNC_NM
+	    	, URL
+	    	, COMP_YN
+	    ) VALUES(
+	    	  #{id}
+	    	, #{funcNm}
+	    	, #{url}
+	    	, IFNULL(#{compYn}, 'N')
+	    )
+    </insert>
+</mapper>
