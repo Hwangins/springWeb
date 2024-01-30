@@ -22,10 +22,79 @@
     </plugins>
   </build>
   <dependencies>
+  	<!-- Spring MVC -->
   	<dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-webmvc</artifactId>
     	<version>5.3.6</version>
+	</dependency>
+	
+	<!-- Spring JDBC -->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-jdbc</artifactId>
+    	<version>5.3.6</version>
+    </dependency>
+	
+	<!-- servlet 1.2 -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+    	<version>1.2</version>
+	</dependency>
+	
+	<!-- MyBatis -->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>3.5.1</version>
+    </dependency>
+    
+    <!-- MyBatis Spring Integration -->
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-spring</artifactId>
+        <version>3.0.1</version>
+    </dependency>
+    
+    <!-- MyBatis의 실행 결과를 camelcase로 변환 -->
+    <dependency>
+		<groupId>com.google.guava</groupId>
+		<artifactId>guava</artifactId>
+		<version>31.1-jre</version>
+	</dependency>
+
+    <!-- 데이터베이스 드라이버 (예: MySQL) -->
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.27</version>
+    </dependency>
+	
+	<!-- Jackson @Responsebody를 json 형태로 반환 -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.13.0</version> <!-- 최신 버전 사용 -->
+    </dependency>
+    
+    <!-- SQL 로깅 -->
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-api</artifactId>
+	    <version>1.7.25</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-classic</artifactId>
+	    <version>1.2.3</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>jcl-over-slf4j</artifactId>
+	    <version>1.7.25</version>
 	</dependency>
   </dependencies>
 </project>

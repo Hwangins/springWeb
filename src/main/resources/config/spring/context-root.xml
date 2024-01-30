@@ -1,0 +1,45 @@
+<!-- context.xml -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 프로퍼티 등록 : DB -->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    	<property name="location" value="classpath:property/app/database.properties"/>
+	</bean>
+	
+    <!-- 데이터베이스 연결 설정 -->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${db.driver}" />
+        <property name="url" value="${db.url}" />
+        <property name="username" value="${db.username}" />
+        <property name="password" value="${db.password}" />
+    </bean>
+    
+    <!-- MyBatis 설정 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <property name="dataSource" ref="dataSource" />
+	    <property name="configLocation" value="classpath:config/spring/mybatis-config.xml" />
+	    <property name="mapperLocations" value="classpath:config/mapper/*.xml" />
+	</bean>
+	
+	<!-- SQL Mapper 인터페이스 경로 설정 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+	    <property name="basePackage" value="com.springWeb" />
+	</bean>
+	
+	<!-- message properties -->
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>classpath:property/message/message</value>
+			</list>
+		</property>
+		<property name="useCodeAsDefaultMessage" value="true"/>
+		<property name="cacheSeconds" value="0"/>
+		<property name="defaultEncoding" value="UTF-8"/>
+		<property name="fallbackToSystemLocale" value="false"/>
+	</bean>
+	<!-- message properties -->
+</beans>
