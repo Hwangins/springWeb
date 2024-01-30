@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springWeb.module.user.repository.UserRepository">
+    <insert id="insertAuthCode" parameterType="map">
+        INSERT INTO USER_JOIN_AUTH_CODE(
+       			EMAIL,
+        		AUTH_CODE,
+        		CHECK_END_YN,
+        		REG_DATE
+       		) VALUES (
+       			#{email},
+       			#{authCode},
+       			'N',
+       			NOW()
+       		) ON DUPLICATE KEY UPDATE
+       		    EMAIL = #{email},
+       		    AUTH_CODE = #{authCode},
+       		    CHECK_END_YN = 'N',
+       		    UPT_DATE = NOW()
+    </insert>
+</mapper>
